@@ -64,5 +64,5 @@ For production use, I would add form validation for the cart interaction, implem
 
 ## Author
 
-- Frontend Mentor - [@your-username](https://www.frontendmentor.io/profile/your-username)
-- GitHub - [@your-username](https://github.com/your-username)
+- Frontend Mentor - [[@your-username](https://www.frontendmentor.io/profile/Kelvyn94)]
+- GitHub - [[@your-username](https://github.com/Kelvyn94)]
