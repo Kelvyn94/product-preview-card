@@ -57,6 +57,20 @@ For production use, I would add form validation for the cart interaction, implem
 - [Google Fonts](https://fonts.google.com) for the typography resources
 - Kevin Powell's "Conquering Responsive Layouts" course for fundamental responsive design concepts
 
+## Results
+
+## Desktop View
+
+![Descktop Screenshot](./design/desktop-design.jpg)
+
+## Mobile View
+
+![Mobile Scrrenshot](./design/mobile-design.jpg)
+
+## Active View
+
+![Active Screenshot](./design/active-states.jpg)
+
 ## Links
 
 - [Solution URL](https://github.com/your-username/product-preview-card)
