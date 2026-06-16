@@ -1,0 +1,243 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Fraunces:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(30, 38%, 92%);
+  font-family: "Montserrat" sans-serif;
+  font-size: 0.875rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Card container */
+.card {
+  max-width: 37.5rem;
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+/* Image section  */
+.card_image {
+  background-color: #e9e1d6;
+  min-height: 13.75 rem;
+  background-image: url(./images/image-product-mobile.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card_content {
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.card_category {
+  text-transform: uppercase;
+  letter-spacing: 0.3125rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: hsl(228, 12%, 48%);
+  margin-bottom: 0.2rem;
+}
+
+.card_title {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: hsl(212, 21%, 14%);
+  margin: 0.2rem 0 0.2rem;
+}
+
+.card_description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: hsl(228, 12%, 48%);
+  font-weight: 500;
+  margin: 0.2rem 0 0.4rem;
+}
+
+/* Price area  */
+.card_prices {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin: 0.2rem 0 0.2rem;
+}
+
+.card_price--current {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: hsl(158, 36%, 37%);
+}
+
+.card_price--original {
+  font-size: 0.8125rem;
+  color: hsl(228, 12%, 48%);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+/* Button  */
+.card_button {
+  background-color: hsl(158, 36%, 37%);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.9rem 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: hsl(0, 0%, 100%);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-top: 0.2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.card_button:hover,
+.card_button:focus-visible {
+  background-color: hsl(158, 42%, 18%);
+}
+
+.card_button:focus-visible {
+  outline: 2px solid hsl(158, 42%, 18%);
+  outline-offset: 2px;
+}
+
+.card_button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
+.attribution {
+  margin-top: 2rem;
+  font-size: 0.6875rem;
+  text-align: center;
+  color: hsl(228, 12%, 48%);
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+/* Mobile-first approach - default styles above are for mobile  */
+
+/* Tablet */
+@media (min-width: 48rem) {
+  .card {
+    max-width: 600px;
+    flex-direction: row;
+    border-radius: 0.75rem;
+  }
+
+  .card_image {
+    flex: 0 0 50%;
+    min-height: 300px;
+    background-image: url(./images/image-product-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card_content {
+    flex: 0 0 50%;
+    padding: 2rem 2rem 2.2rem;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+
+  .card_title {
+    font-size: 2.1rem;
+    margin: 0.2rem 0 0.1rem;
+  }
+
+  .card_description {
+    margin: 0.2rem 0 0.2rem;
+  }
+
+  .card_prices {
+    margin: 0.3rem 0 0.2rem;
+  }
+
+  .card_button {
+    margin-top: 0.3rem;
+    padding: 0.943m 0;
+  }
+}
+
+/* Medium screens - 64em (1024px and up)  */
+@media (min-width: 64em) {
+  .card {
+    max-width: 700px;
+  }
+
+  .card_image {
+    min-height: 350px;
+  }
+
+  .card_title {
+    font-size: 2.3rem;
+  }
+
+  .card_price--current {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 23.4375em) {
+  .card_title {
+    font-size: 1.6rem;
+  }
+
+  .card_content {
+    padding: 1.2rem;
+  }
+
+  .card_price--current {
+    font-size: 1.7rem;
+  }
+
+  .card_image {
+    min-height: 180px;
+  }
+}
+
+/* Fluid Typography  */
+.card_title {
+  font-size: clamp(1.6rem, 5vw + 0.5rem, 2.3rem);
+}
+
+.card_price--current {
+  font-size: clamp(1.7rem, 4vw + 0.5rem, 2.2rem);
+}
+
+.card_description {
+  font-size: clamp(0.8rem, 1vw + 0.4rem, 0.95rem);
+}
