@@ -59,7 +59,7 @@ For production use, I would add form validation for the cart interaction, implem
 
 ## Links
 
-- [Solution URL](https://github.com/your-username/product-preview-card)
+- [[Solution URL](https://github.com/Kelvyn94/product-preview-card)]
 - [Live Site URL](https://your-username.github.io/product-preview-card)
 
 ## Author
