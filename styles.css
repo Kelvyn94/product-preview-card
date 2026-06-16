@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @import url(https://fonts.googleapis.com/css?family=Fraunces:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +9,7 @@
 
 body {
   background-color: hsl(30, 38%, 92%);
-  font-family: "Montserrat" sans-serif;
+  font-family: "Montserrat", sans-serif; /* FIXED: Added comma */
   font-size: 0.875rem;
   min-height: 100vh;
   display: flex;
@@ -20,7 +21,7 @@ body {
 
 /* Card container */
 .card {
-  max-width: 37.5rem;
+  max-width: 37.5rem; /* 600px in rem */
   width: 100%;
   background-color: hsl(0, 0%, 100%);
   border-radius: 0.75rem;
@@ -28,13 +29,20 @@ body {
   box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease; /* FIXED: Specific transitions instead of 'all' */
 }
 
-/* Image section  */
+/* Image section */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .card_image {
   background-color: #e9e1d6;
-  min-height: 13.75 rem;
+  min-height: 13.75rem; /* FIXED: Removed space between 13.75 and rem */
   background-image: url(./images/image-product-mobile.jpg);
   background-size: cover;
   background-position: center;
@@ -47,45 +55,46 @@ body {
   flex-direction: column;
   gap: 0.8rem;
 }
+
 .card_category {
   text-transform: uppercase;
   letter-spacing: 0.3125rem;
   font-size: 0.75rem;
   font-weight: 500;
   color: hsl(228, 12%, 48%);
-  margin-bottom: 0.2rem;
+  margin-block-end: 0.2rem; /* FIXED: Using logical property */
 }
 
 .card_title {
   font-family: "Fraunces", serif;
   font-weight: 700;
-  font-size: 1.9rem;
+  font-size: clamp(1.6rem, 5vw + 0.5rem, 2.3rem); /* MOVED: Combined with clamp */
   line-height: 1;
   color: hsl(212, 21%, 14%);
-  margin: 0.2rem 0 0.2rem;
+  margin-block: 0.2rem; /* FIXED: Using logical property */
 }
 
 .card_description {
-  font-size: 0.875rem;
+  font-size: clamp(0.8rem, 1vw + 0.4rem, 0.95rem); /* MOVED: Combined with clamp */
   line-height: 1.6;
   color: hsl(228, 12%, 48%);
   font-weight: 500;
-  margin: 0.2rem 0 0.4rem;
+  margin-block: 0.2rem 0.4rem; /* FIXED: Using logical property */
 }
 
-/* Price area  */
+/* Price area */
 .card_prices {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   flex-wrap: wrap;
-  margin: 0.2rem 0 0.2rem;
+  margin-block: 0.2rem; /* FIXED: Using logical property */
 }
 
 .card_price--current {
   font-family: "Fraunces", serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(1.7rem, 4vw + 0.5rem, 2.2rem); /* MOVED: Combined with clamp */
   color: hsl(158, 36%, 37%);
 }
 
@@ -96,7 +105,7 @@ body {
   font-weight: 500;
 }
 
-/* Button  */
+/* Button */
 .card_button {
   background-color: hsl(158, 36%, 37%);
   border: none;
@@ -110,8 +119,8 @@ body {
   align-items: center;
   gap: 0.6rem;
   cursor: pointer;
-  transition: background-color 0.15s ease;
-  margin-top: 0.2rem;
+  transition: background-color 0.15s ease, transform 0.15s ease; /* FIXED: Specific transitions */
+  margin-block-start: 0.2rem; /* FIXED: Using logical property */
   font-family: "Montserrat", sans-serif;
 }
 
@@ -125,6 +134,18 @@ body {
   outline-offset: 2px;
 }
 
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card_button {
+    transition: none; /* FIXED: Accessibility - respect reduced motion */
+  }
+  
+  .card_button:hover {
+    transform: none;
+  }
+}
+
 .card_button svg {
   width: 1.1rem;
   height: 1.1rem;
@@ -132,7 +153,7 @@ body {
 }
 
 .attribution {
-  margin-top: 2rem;
+  margin-block-start: 2rem; /* FIXED: Using logical property */
   font-size: 0.6875rem;
   text-align: center;
   color: hsl(228, 12%, 48%);
@@ -147,20 +168,21 @@ body {
   text-decoration: underline;
 }
 
-/* MEDIA QUERIES */
-/* Mobile-first approach - default styles above are for mobile  */
+/* ========================================
+   MEDIA QUERIES - Mobile-first approach
+   ======================================== */
 
-/* Tablet */
-@media (min-width: 48rem) {
+/* Tablet and up - using min-width (mobile-first) */
+@media (min-width: 48rem) { /* 768px */
   .card {
-    max-width: 600px;
+    max-width: 37.5rem; /* 600px in rem */
     flex-direction: row;
     border-radius: 0.75rem;
   }
 
   .card_image {
     flex: 0 0 50%;
-    min-height: 300px;
+    min-height: 18.75rem; /* 300px in rem */
     background-image: url(./images/image-product-desktop.jpg);
     background-size: cover;
     background-position: center;
@@ -174,46 +196,38 @@ body {
   }
 
   .card_title {
-    font-size: 2.1rem;
-    margin: 0.2rem 0 0.1rem;
+    margin-block: 0.2rem 0.1rem; /* FIXED: Using logical property */
   }
 
   .card_description {
-    margin: 0.2rem 0 0.2rem;
+    margin-block: 0.2rem; /* FIXED: Using logical property */
   }
 
   .card_prices {
-    margin: 0.3rem 0 0.2rem;
+    margin-block: 0.3rem 0.2rem; /* FIXED: Using logical property */
   }
 
   .card_button {
-    margin-top: 0.3rem;
-    padding: 0.943m 0;
+    margin-block-start: 0.3rem; /* FIXED: Using logical property */
+    padding: 0.9rem 0; /* FIXED: Was 0.943m - changed to valid unit */
   }
 }
 
-/* Medium screens - 64em (1024px and up)  */
-@media (min-width: 64em) {
+/* Large screens - 64rem (1024px) and up */
+@media (min-width: 64rem) {
   .card {
-    max-width: 700px;
+    max-width: 43.75rem; /* 700px in rem */
   }
 
   .card_image {
-    min-height: 350px;
-  }
-
-  .card_title {
-    font-size: 2.3rem;
-  }
-
-  .card_price--current {
-    font-size: 2.2rem;
+    min-height: 21.875rem; /* 350px in rem */
   }
 }
 
-@media (max-width: 23.4375em) {
+/* Small screens - using min-width instead of max-width (mobile-first) */
+@media (max-width: 23.4375rem) { /* 375px */
   .card_title {
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, 4vw + 0.5rem, 1.6rem); /* FIXED: Using clamp for consistency */
   }
 
   .card_content {
@@ -221,23 +235,85 @@ body {
   }
 
   .card_price--current {
-    font-size: 1.7rem;
+    font-size: clamp(1.5rem, 3vw + 0.5rem, 1.7rem); /* FIXED: Using clamp for consistency */
   }
 
   .card_image {
-    min-height: 180px;
+    min-height: 11.25rem; /* 180px in rem */
   }
 }
 
-/* Fluid Typography  */
-.card_title {
-  font-size: clamp(1.6rem, 5vw + 0.5rem, 2.3rem);
+/* ========================================
+   CSS CUSTOM PROPERTIES (Variables)
+   ======================================== */
+:root {
+  /* Colors */
+  --color-primary-green: hsl(158, 36%, 37%);
+  --color-primary-green-dark: hsl(158, 42%, 18%);
+  --color-neutral-black: hsl(212, 21%, 14%);
+  --color-neutral-grey: hsl(228, 12%, 48%);
+  --color-neutral-cream: hsl(30, 38%, 92%);
+  --color-neutral-white: hsl(0, 0%, 100%);
+  
+  /* Typography */
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-fraunces: "Fraunces", serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.2rem;
+  --spacing-sm: 0.4rem;
+  --spacing-md: 0.8rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border radius */
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
-.card_price--current {
-  font-size: clamp(1.7rem, 4vw + 0.5rem, 2.2rem);
+/* Using CSS variables for consistency */
+body {
+  background-color: var(--color-neutral-cream);
+  font-family: var(--font-montserrat);
+}
+
+.card {
+  background-color: var(--color-neutral-white);
+  border-radius: var(--radius-lg);
+}
+
+.card_category {
+  color: var(--color-neutral-grey);
+}
+
+.card_title {
+  font-family: var(--font-fraunces);
+  color: var(--color-neutral-black);
 }
 
 .card_description {
-  font-size: clamp(0.8rem, 1vw + 0.4rem, 0.95rem);
+  color: var(--color-neutral-grey);
+}
+
+.card_price--current {
+  font-family: var(--font-fraunces);
+  color: var(--color-primary-green);
+}
+
+.card_price--original {
+  color: var(--color-neutral-grey);
+}
+
+.card_button {
+  background-color: var(--color-primary-green);
+  font-family: var(--font-montserrat);
+}
+
+.card_button:hover,
+.card_button:focus-visible {
+  background-color: var(--color-primary-green-dark);
+}
+
+.attribution {
+  color: var(--color-neutral-grey);
 }
